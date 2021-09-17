@@ -1,37 +1,37 @@
-import { useState, useEffect } from 'react';
-import useBreedList from './useBreedList';
-import Results from './Results';
+import { useState, useEffect } from 'react'
+import useBreedList from './useBreedList'
+import Results from './Results'
 
-const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
+const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile']
 
 const SearchParams = () => {
-	const [animal, setAnimal] = useState('');
-	const [location, setLocation] = useState('');
-	const [breed, setBreed] = useState('');
-	const [pets, setPets] = useState([]);
-	const [breeds] = useBreedList(animal);
+	const [animal, setAnimal] = useState('')
+	const [location, setLocation] = useState('')
+	const [breed, setBreed] = useState('')
+	const [pets, setPets] = useState([])
+	const [breeds] = useBreedList(animal)
 
 	// componentDidMount? - only used in class components
 	// use useEffect here in functional components
 	useEffect(() => {
-		requestPets();
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+		requestPets()
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 	async function requestPets() {
 		const res = await fetch(
 			`http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-		);
-		const json = await res.json();
-		console.log('here', json);
-		setPets(json.pets);
+		)
+		const json = await res.json()
+		console.log('here', json)
+		setPets(json.pets)
 	}
 
 	return (
 		<div className='search-params'>
 			<form
 				onSubmit={(e) => {
-					e.preventDefault();
-					requestPets();
+					e.preventDefault()
+					requestPets()
 				}}
 			>
 				<label htmlFor='location'>
@@ -81,7 +81,7 @@ const SearchParams = () => {
 
 			<Results pets={pets} />
 		</div>
-	);
-};
+	)
+}
 
-export default SearchParams;
+export default SearchParams
