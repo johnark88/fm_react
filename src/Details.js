@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Carousel from './Carousel';
+import ErrorBoundary from './ErrorBoundary';
 
 class Details extends Component {
 	// default state of component
@@ -58,4 +59,13 @@ class Details extends Component {
 		);
 	}
 }
-export default withRouter(Details);
+
+const DetailsWithRouter = withRouter(Details);
+
+export default function DetailsWithErrorBoundry() {
+	return (
+		<ErrorBoundary>
+			<DetailsWithRouter />
+		</ErrorBoundary>
+	);
+}

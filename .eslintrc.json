@@ -20,6 +20,8 @@
 			"jsx": true
 		}
 	},
+	// Had to tell it where to look for the config file
+	"babelOptions": { "configFile": "/.babelrc" },
 	"env": {
 		"es6": true,
 		"browser": true,
