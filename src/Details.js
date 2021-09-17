@@ -2,11 +2,10 @@ import { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 class Details extends Component {
-	constructor() {
-		super();
+	// default state of component
+	// use babel parser to fix error
+	state = { loading: true };
 
-		this.state = { loading: true };
-	}
 	async componentDidMount() {
 		//data fetch
 		const res = await fetch(
