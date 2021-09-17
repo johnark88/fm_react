@@ -37,7 +37,6 @@ class Details extends Component {
 	}
 
 	render() {
-		throw new Error()
 		if (this.state.loading) {
 			return <h2>Loading</h2>
 		}
