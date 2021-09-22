@@ -1,4 +1,4 @@
-import Pet from './Pet'
+import Pet from './Pet';
 
 const Results = ({ pets }) => {
 	return (
@@ -19,7 +19,7 @@ const Results = ({ pets }) => {
 				))
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default Results
+export default Results;

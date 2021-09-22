@@ -1,20 +1,20 @@
-import { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-import Carousel from './Carousel'
-import ErrorBoundary from './ErrorBoundary'
-import ThemeContext from './ThemeContext'
+import { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import Carousel from './Carousel';
+import ErrorBoundary from './ErrorBoundary';
+import ThemeContext from './ThemeContext';
 
 class Details extends Component {
 	// default state of component
 	// use babel parser to fix error
-	state = { loading: true }
+	state = { loading: true };
 
 	async componentDidMount() {
 		//data fetch
 		const res = await fetch(
 			`http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`
-		)
-		const json = await res.json()
+		);
+		const json = await res.json();
 		this.setState(
 			Object.assign(
 				{
@@ -22,7 +22,7 @@ class Details extends Component {
 				},
 				json.pets[0]
 			)
-		)
+		);
 
 		// verbose, know exactly what to expect from API
 		// this.setState({
@@ -39,10 +39,11 @@ class Details extends Component {
 
 	render() {
 		if (this.state.loading) {
-			return <h2>Loading</h2>
+			return <h2>Loading</h2>;
 		}
 		// deconstruct
-		const { animal, breed, city, state, description, name, images } = this.state
+		const { animal, breed, city, state, description, name, images } =
+			this.state;
 
 		return (
 			<div className='details'>
@@ -63,16 +64,16 @@ class Details extends Component {
 					<p>{description}</p>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
-const DetailsWithRouter = withRouter(Details)
+const DetailsWithRouter = withRouter(Details);
 
 export default function DetailsWithErrorBoundry() {
 	return (
 		<ErrorBoundary>
 			<DetailsWithRouter />
 		</ErrorBoundary>
-	)
+	);
 }

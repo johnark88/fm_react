@@ -1,5 +1,5 @@
-import { createContext } from 'react'
+import { createContext } from 'react';
 
-const ThemeContext = createContext('dark', function () {})
+const ThemeContext = createContext('dark', function () {});
 
-export default ThemeContext
+export default ThemeContext;
