@@ -1,0 +1,24 @@
+import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+
+const modalRoot = document.getElementById('modal');
+
+// children from props
+const Modal = ({ children }) => {
+	// container for state - to survive past render cycles
+	const elRef = useRef(null);
+
+	if (!elRef.current) {
+		// Only ONE div, does not create a new div on re-render
+		elRef.current = document.createElement('div');
+	}
+
+	useEffect(() => {
+		modalRoot.appendChild(elRef.current);
+		return () => modalRoot.removeChild(elRef.current);
+	}, []);
+
+	return createPortal(<div>{children}</div>, elRef.current);
+};
+
+export default Modal;
